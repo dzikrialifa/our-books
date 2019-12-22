@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "622777701919",
+    "firebase_url": "https://ourbooks-b79a6.firebaseio.com",
+    "project_id": "ourbooks-b79a6",
+    "storage_bucket": "ourbooks-b79a6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:622777701919:android:4437bfb4b4a1db15b0672a",
+        "android_client_info": {
+          "package_name": "org.android.dzik.ourbooks"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "622777701919-i3fioiflfkrkbp6mk9cb9s5j4kmhkrao.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.android.dzik.ourbooks",
+            "certificate_hash": "6961be4310bf0cc58dc907726ab6055589fe7a5a"
+          }
+        },
+        {
+          "client_id": "622777701919-1cgqafb5si6p4p94n5l81acpicik58ac.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrBglhdxj3_xQ-KQn_I4xXC_HJF5eVfaA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "622777701919-1cgqafb5si6p4p94n5l81acpicik58ac.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

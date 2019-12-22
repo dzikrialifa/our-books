@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import org.android.dzik.ourbooks.activities.MainActivity;
+import org.android.dzik.ourbooks.fragments.HomeFragment;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -19,8 +20,8 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
                 Intent i = new Intent(SplashScreen.this, MainActivity.class);
-                startActivity(i);
+                startActivity(i);finish();
             }
-        }, 3000);
+        }, 2000);
     }
 }

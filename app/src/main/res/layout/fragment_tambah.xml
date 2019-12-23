@@ -10,13 +10,62 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textView3"
+        <EditText
+            android:id="@+id/nama_film"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tambah Fragment"
-            android:textSize="30sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Nama Film"
+            app:layout_constraintBottom_toTopOf="@+id/emails"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nama_pemesan" />
+
+        <EditText
+            android:id="@+id/emails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Emails"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nama_film" />
+
+        <EditText
+            android:id="@+id/jmlh_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/emails" />
+
+        <Button
+            android:id="@+id/button_smpan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Simpan"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/jmlh_total" />
+
+        <EditText
+            android:id="@+id/nama_pemesan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Nama Pemesan"
+            app:layout_constraintBottom_toTopOf="@+id/nama_film"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

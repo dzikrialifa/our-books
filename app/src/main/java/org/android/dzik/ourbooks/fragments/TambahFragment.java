@@ -1,31 +1,31 @@
 package org.android.dzik.ourbooks.fragments;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import org.android.dzik.ourbooks.R;
-import org.android.dzik.ourbooks.model.Buku;
+import org.android.dzik.ourbooks.model.Film;
 
 
 public class TambahFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
     private DatabaseReference database;
-    EditText namaFilm,namaPemesan,emails,jmlhtotal;
+    EditText namaPemesanView,anakTextView,dewasaTextView;
     public TambahFragment() {
         // Required empty public constructor
     }
@@ -36,65 +36,70 @@ public class TambahFragment extends Fragment {
         database = FirebaseDatabase.getInstance().getReference();
 
         View view = inflater.inflate(R.layout.fragment_tambah,container,false);
-        namaFilm = view.findViewById(R.id.nama_film);
-        namaPemesan = view.findViewById(R.id.nama_pemesan);
-        emails = view.findViewById(R.id.emails);
-        jmlhtotal = view.findViewById(R.id.jmlh_total);
-        Button simpan = view.findViewById(R.id.button_smpan);
+        namaPemesanView = view.findViewById(R.id.input_pemesan);
+        anakTextView = view.findViewById(R.id.input_anak);
+        dewasaTextView = view.findViewById(R.id.input_dewasa);
+        final RadioGroup seatGroup = view.findViewById(R.id.group_tempatduduk);
+
+        Button simpan = view.findViewById(R.id.button_checkout);
         simpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String film = namaFilm.getText().toString();
-                String pemesan = namaPemesan.getText().toString();
-                String email = emails.getText().toString();
-                int total = Integer.parseInt(jmlhtotal.getText().toString());
+                String pemesan = namaPemesanView.getText().toString();
+                String dewasaString = namaPemesanView.getText().toString();
+                String anakString = anakTextView.getText().toString();
+                int checkID = seatGroup.getCheckedRadioButtonId();
 
-                if (film.equals("")){
-                    namaFilm.setError("masukkan nama film");
-                    namaFilm.requestFocus();
-                }else if(pemesan.equals("")){
-                    namaPemesan.setError("pemesan no null");
-                    namaPemesan.requestFocus();
-                }else if(emails.equals("")){
-                    emails.setError("email tidak kosong");
-                    emails.requestFocus();
-                }else if(jmlhtotal == null){
-                    jmlhtotal.setError("jumlah penonton tidak boleh kosong");
-                    jmlhtotal.requestFocus();
+                if ((checkID != -1) && !TextUtils.isEmpty(pemesan) && !TextUtils.isEmpty(dewasaString) && !TextUtils.isEmpty(anakString)){
+                    int dewasa = Integer.parseInt(dewasaString);
+                    int anak = Integer.parseInt(anakString);
+                    int seat = (checkID== R.id.radio_reguler) ? Film.REGULER :
+                            (checkID==R.id.radio_sweet) ? Film.SWEET :
+                                    Film.FAMILY;
+                    Film sumFilm = new Film(pemesan,anak,dewasa,seat);
+                    mListener.onSaveData(sumFilm.getIndex());
+                    submitBuku(new Film(pemesan,anak,dewasa,seat));
+                }else{
+                    Toast.makeText(getActivity(),"Please fill amount adult,child and SEAT",
+                            Toast.LENGTH_SHORT).show();
                 }
-                else{
-                    submitBuku(new Buku(
-                            film.toLowerCase(),
-                            pemesan.toLowerCase(),
-                            email.toLowerCase(),
-                            total
-                            ));
-                }
+//                if (film.equals("")){
+//                    namaFilm.setError("masukkan nama film");
+//                    namaFilm.requestFocus();
+//                }else if(pemesan.equals("")){
+//                    namaPemesan.setError("pemesan no null");
+//                    namaPemesan.requestFocus();
+//                }else if(emails.equals("")){
+//                    emails.setError("email tidak kosong");
+//                    emails.requestFocus();
+//                }else if(jmlhtotal == null){
+//                    jmlhtotal.setError("jumlah penonton tidak boleh kosong");
+//                    jmlhtotal.requestFocus();
+//                }
+//                else{
+//                    submitBuku(new Film(
+//                            total,total,total
+//                            ));
+//                }
 
             }
         });
         // Inflate the layout for this fragment
         return view;
     }
-    private void submitBuku(Buku buku) {
+    private void submitBuku(Film film) {
         database.child("Result")
                 .push()
-                .setValue(buku)
+                .setValue(film)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        namaFilm.setText("");
-                        emails.setText("");
+                        namaPemesanView.setText("");
+                        anakTextView.setText("");
+                        dewasaTextView.setText("");
                         Toast.makeText(getContext(),"Data berhasil ditambah",Toast.LENGTH_SHORT).show();
                     }
                 });
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onSaveData();
-        }
     }
 
     @Override
@@ -115,6 +120,6 @@ public class TambahFragment extends Fragment {
 
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onSaveData();
+        void onSaveData(int index);
     }
 }

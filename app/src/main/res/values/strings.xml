@@ -3,4 +3,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="next">next</string>
+    <string name="skip">skip</string>
+    <string name="input_name">Masukkan Nama</string>
 </resources>

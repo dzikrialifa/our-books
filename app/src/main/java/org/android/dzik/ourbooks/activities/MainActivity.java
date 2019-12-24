@@ -1,16 +1,13 @@
 package org.android.dzik.ourbooks.activities;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
@@ -20,6 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import org.android.dzik.ourbooks.R;
+import org.android.dzik.ourbooks.fragments.HasilFragment;
 import org.android.dzik.ourbooks.fragments.HomeFragment;
 import org.android.dzik.ourbooks.fragments.ProfileFragment;
 import org.android.dzik.ourbooks.fragments.TambahFragment;
@@ -27,7 +25,7 @@ import org.android.dzik.ourbooks.fragments.TambahFragment;
 public class MainActivity extends AppCompatActivity
         implements BottomNavigationView.OnNavigationItemSelectedListener,
         TambahFragment.OnFragmentInteractionListener,
-HomeFragment.OnFragmentInteractionListener{
+HomeFragment.OnFragmentInteractionListener, HasilFragment.OnFragmentInteractionListener {
 
     private static final String TAG = "ourbooks";
     private TambahFragment tambahFragment;
@@ -71,7 +69,7 @@ HomeFragment.OnFragmentInteractionListener{
 
     private boolean loadFragment(Fragment fragment) {
         if (fragment != null) {
-                getSupportFragmentManager().beginTransaction()
+            getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragment_container, fragment)
                     .commit();
             return true;
@@ -111,16 +109,22 @@ HomeFragment.OnFragmentInteractionListener{
     }
 
     @Override
-    public void onSaveData() {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container,new ProfileFragment()).commit();
-    }
-
-    @Override
     public void onFragmentInteraction(Uri uri) {
 
     }
 
+    @Override
+    public void onTryAgain(String tag) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, tambahFragment)
+                .commit();
+    }
+
+    @Override
+    public void onSaveData(int index) {
+
+    }
+}
 
 //        loadFragment(new HomeFragment());
 //        BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
@@ -166,4 +170,4 @@ HomeFragment.OnFragmentInteractionListener{
 //    public void onPointerCaptureChanged(boolean hasCapture) {
 //
 //    }
-}
+//}

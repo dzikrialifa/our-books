@@ -32,7 +32,7 @@
             android:layout_marginTop="24dp"
             android:fontFamily="georgia"
             android:text="Form Ticket"
-            android:textColor="@android:color/white"
+            android:textColor="#050505"
             android:textSize="36sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -46,15 +46,13 @@
             app:layout_constraintGuide_begin="205dp" />
 
         <LinearLayout
-            android:layout_width="369dp"
-            android:layout_height="494dp"
+            android:layout_width="296dp"
+            android:layout_height="466dp"
             android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
             android:background="@drawable/linear_rounded"
             android:orientation="vertical"
             app:layout_constraintBottom_toTopOf="@+id/guideline4"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline3"
             app:layout_constraintVertical_bias="0.0">
@@ -70,7 +68,7 @@
 
             <EditText
                 android:id="@+id/input_pemesan"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="35dp"
                 android:layout_marginEnd="60dp"
@@ -91,13 +89,13 @@
 
             <EditText
                 android:id="@+id/input_dewasa"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="35dp"
                 android:layout_marginEnd="60dp"
                 android:ems="10"
                 android:hint="jumlah dewasa"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 android:textColor="#D3D5DB"
                 android:textSize="18sp" />
 
@@ -112,13 +110,13 @@
 
             <EditText
                 android:id="@+id/input_anak"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="35dp"
                 android:layout_marginEnd="60dp"
                 android:ems="10"
                 android:hint="jumlah anak"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 android:textColor="#D3D5DB"
                 android:textSize="18sp" />
 
@@ -133,7 +131,7 @@
 
             <RadioGroup
                 android:id="@+id/group_tempatduduk"
-                android:layout_width="285dp"
+                android:layout_width="210dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="35dp"
                 android:layout_marginTop="10dp">
@@ -162,7 +160,7 @@
 
             <Button
                 android:id="@+id/button_checkout"
-                android:layout_width="match_parent"
+                android:layout_width="230dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="15dp"

@@ -23,19 +23,20 @@ import org.android.dzik.ourbooks.fragments.ProfileFragment;
 import org.android.dzik.ourbooks.fragments.TambahFragment;
 
 public class MainActivity extends AppCompatActivity
-        implements BottomNavigationView.OnNavigationItemSelectedListener,
-        TambahFragment.OnFragmentInteractionListener,
-HomeFragment.OnFragmentInteractionListener, HasilFragment.OnFragmentInteractionListener {
+        implements BottomNavigationView.OnNavigationItemSelectedListener,HomeFragment.OnFragmentInteractionListener,
+        HasilFragment.OnFragmentInteractionListener
+{
 
     private static final String TAG = "ourbooks";
     private TambahFragment tambahFragment;
-//    private HomeFragment homeFragment;
+    private HasilFragment hasilFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tambahFragment = new TambahFragment();
+        hasilFragment = new HasilFragment();
 
         loadFragment(new HomeFragment());
         BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
@@ -93,7 +94,7 @@ HomeFragment.OnFragmentInteractionListener, HasilFragment.OnFragmentInteractionL
                         .replace(R.id.fragment_container, fragment).addToBackStack("tambah")
                         .commit();
                 break;
-            case R.id.action_profile:
+            case R.id.action_listfilm:
                 fragment = new ProfileFragment();
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container, fragment).addToBackStack("profile")
@@ -108,6 +109,7 @@ HomeFragment.OnFragmentInteractionListener, HasilFragment.OnFragmentInteractionL
 
     }
 
+
     @Override
     public void onFragmentInteraction(Uri uri) {
 
@@ -119,55 +121,4 @@ HomeFragment.OnFragmentInteractionListener, HasilFragment.OnFragmentInteractionL
                 .replace(R.id.fragment_container, tambahFragment)
                 .commit();
     }
-
-    @Override
-    public void onSaveData(int index) {
-
-    }
 }
-
-//        loadFragment(new HomeFragment());
-//        BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
-//        // beri listener pada saat item/menu bottomnavigation terpilih
-//        bottomNavigationView.setOnNavigationItemSelectedListener(this);
-//    }
-//    private boolean loadFragment(Fragment fragment) {
-//        if (fragment != null) {
-//                getSupportFragmentManager().beginTransaction()
-//                    .replace(R.id.fragment_container, fragment)
-//                    .commit();
-//            return true;
-//        }
-//        return false;
-//    }
-//    @Override
-//    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-//        Fragment fragment = null;
-//        switch (menuItem.getItemId()) {
-//            case R.id.action_home:
-//                fragment = new HomeFragment();
-//                getSupportFragmentManager().beginTransaction()
-//                        .replace(R.id.fragment_container, fragment)
-//                        .commit();
-//                break;
-//            case R.id.action_add:
-//                fragment = new TambahFragment();
-//                getSupportFragmentManager().beginTransaction()
-//                        .replace(R.id.fragment_container, fragment).addToBackStack("tambah")
-//                        .commit();
-//                break;
-//            case R.id.action_profile:
-//                fragment = new ProfileFragment();
-//                getSupportFragmentManager().beginTransaction()
-//                        .replace(R.id.fragment_container, fragment).addToBackStack("profile")
-//                        .commit();
-//                break;
-//        }
-//        return loadFragment(fragment);
-//    }
-//
-//    @Override
-//    public void onPointerCaptureChanged(boolean hasCapture) {
-//
-//    }
-//}

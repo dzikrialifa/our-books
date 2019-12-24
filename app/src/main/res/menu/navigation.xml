@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/action_home"
-        android:title="Home"
-        android:icon="@drawable/homepage" />
-    <item android:id="@+id/action_add"
-        android:title="Add"
-        android:icon="@drawable/add_tool" />
-    <item android:id="@+id/action_profile"
-        android:title="Profile"
-        android:icon="@drawable/male_avatar" />
+  <item android:id="@+id/action_home"
+      android:title="Home"
+      android:icon="@drawable/homepage" />
+  <item android:id="@+id/action_listfilm"
+      android:title="List Film"
+      android:icon="@drawable/notebook" />
+  <item android:id="@+id/action_add"
+      android:title="Booking"
+      android:icon="@drawable/piece_of_paper_and_pencil" />
+
 </menu>

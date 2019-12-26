@@ -33,7 +33,7 @@ public class ListFragment extends Fragment {
         ImageView list1 = view.findViewById(R.id.imageView);
         ImageView list2 = view.findViewById(R.id.imageView2);
         ImageView list3 = view.findViewById(R.id.imageView3);
-        ImageView list4 = view.findViewById(R.id.imageView4);
+        ImageView list4 = view.findViewById(R.id.imageView5);
 
         list1.setOnClickListener(new View.OnClickListener() {
             @Override

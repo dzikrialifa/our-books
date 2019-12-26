@@ -17,14 +17,18 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import org.android.dzik.ourbooks.R;
+import org.android.dzik.ourbooks.fragments.AvengersFragment;
+import org.android.dzik.ourbooks.fragments.BlackPanther;
 import org.android.dzik.ourbooks.fragments.HasilFragment;
 import org.android.dzik.ourbooks.fragments.HomeFragment;
-import org.android.dzik.ourbooks.fragments.ProfileFragment;
+import org.android.dzik.ourbooks.fragments.ListFragment;
+import org.android.dzik.ourbooks.fragments.MazeRunner;
 import org.android.dzik.ourbooks.fragments.TambahFragment;
+import org.android.dzik.ourbooks.fragments.Venom;
 
 public class MainActivity extends AppCompatActivity
         implements BottomNavigationView.OnNavigationItemSelectedListener,HomeFragment.OnFragmentInteractionListener,
-        HasilFragment.OnFragmentInteractionListener
+        HasilFragment.OnFragmentInteractionListener,ListFragment.OnFragmentInteractionListener
 {
 
     private static final String TAG = "ourbooks";
@@ -95,9 +99,9 @@ public class MainActivity extends AppCompatActivity
                         .commit();
                 break;
             case R.id.action_listfilm:
-                fragment = new ProfileFragment();
+                fragment = new ListFragment();
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, fragment).addToBackStack("profile")
+                        .replace(R.id.fragment_container, fragment).addToBackStack("list")
                         .commit();
                 break;
         }
@@ -119,6 +123,34 @@ public class MainActivity extends AppCompatActivity
     public void onTryAgain(String tag) {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, tambahFragment)
+                .commit();
+    }
+
+
+    @Override
+    public void onlist1clicked() {
+        getSupportFragmentManager().beginTransaction().addToBackStack(null)
+                .replace(R.id.fragment_container, new BlackPanther())
+                .commit();
+    }
+
+    @Override
+    public void onlist2clicked() {
+        getSupportFragmentManager().beginTransaction().addToBackStack(null)
+                .replace(R.id.fragment_container, new MazeRunner())
+                .commit();
+    }
+
+    @Override
+    public void onlist3clicked() {
+        getSupportFragmentManager().beginTransaction().addToBackStack(null)
+                .replace(R.id.fragment_container, new Venom())
+                .commit();
+    }
+    @Override
+    public void onlist4clicked() {
+        getSupportFragmentManager().beginTransaction().addToBackStack(null)
+                .replace(R.id.fragment_container, new AvengersFragment())
                 .commit();
     }
 }
